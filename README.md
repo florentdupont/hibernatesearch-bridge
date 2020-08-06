@@ -1,6 +1,14 @@
-# POC Hibernate Search et Bridge
+# POC Hibernate Search et StringBridge
 
-POC pour valider le fait d'indexer des données qui ne sont pas portée par JPA à partir d'une Entité JPA.
+Keywords:
+ * SpringBoot
+ * Spring Data JPA / Hibernate
+ * PostgreSQL
+ * HibernateSearch
+ * ElasticSearch
+ * Programmatic mapping 
+
+POC d'indexation des Entité JPA qui sont liés à des entité non-JPA.
 
 Par exemple : 
 ```
@@ -31,10 +39,24 @@ Dans ElasticSearch, nous avons :
 On s'appuie sur les FieldBridge pour résoudre cette problématique. 
 
 
-## Lancement préalable
+## Lancement
+
+Lancer Docker
 ```
 docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:5.6.16
 ```
+
+Démarrer le service PostgreSQL
+```
+sudo systemctl start postgresql
+```
+
+créer une database `test`
+
+Lancer l'application.
+
+
+**Aide ElasticSearch**
 
 Pour lister tous les documents d'un index donné :
 ```bash
